@@ -10,7 +10,7 @@ export default function sendMessage(message:Discord.Message, botName) {
 	{
 		if(hiWorlds.indexOf(message.content) !== -1)
 		{
-			message.channel.send(`${message.content} ${message.member.displayName}`)
+			message.channel.send(`${message.content} <@${message.member.id}>`)
 		}
 		if(message.mentions.users.find((user) => user.username === botName))
 		{
