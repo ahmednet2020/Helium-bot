@@ -11,5 +11,9 @@
   "devDependencies": {
     "@types/node": "^11.9.4",
     "typescript": "^3.3.3"
+  },
+  "scripts": {
+    "start": "tsc -w",
+    "run": "node dist/index.js"
   }
 }
