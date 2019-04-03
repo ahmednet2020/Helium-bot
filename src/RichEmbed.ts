@@ -2,7 +2,7 @@ import * as Discord from 'discord.js'
 import { prefix } from './config'
 
 //RichEmbed info in chat comand
-export default function RichEmbed(message:Discord.Message, botName) {
+export default function RichEmbed(message:Discord.Message, botName, report):any {
 	if(message.author.bot) return null;
 	if(message.channel.type === 'dm') return null;
 
@@ -15,7 +15,9 @@ export default function RichEmbed(message:Discord.Message, botName) {
 			.setThumbnail(url)
 			.setTimestamp()
 			.addField('bot name',botName)
-			message.channel.send(botinfo); 
+			if(!report) return message.channel.send('cant find report server');
+			report.send(botinfo);
+			return null;
 	} else if (message.content.startsWith(`${prefix}info`)){
 		let user = message.mentions.members.first();
 		if(!user) return null;
@@ -26,6 +28,8 @@ export default function RichEmbed(message:Discord.Message, botName) {
 			.setThumbnail(url)
 			.setTimestamp()
 			.addField('join at', user.joinedAt);
-			message.channel.send(userInfo); 
+			if(!report) return message.channel.send('cant find report server');
+			report.send(userInfo);
+			return null;
 	}
 }

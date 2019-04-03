@@ -3,7 +3,6 @@ import * as Discord from 'discord.js'
 const hiWorlds = ['hi', 'hello', 'welcome'];
 
 export default function sendMessage(message:Discord.Message, botName) {
-	if(message.author.bot) return null;
 	if(message.channel.type === 'dm') {
 		message.channel.send('what');
 	} else if (message.channel.type === 'text')
