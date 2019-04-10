@@ -28,11 +28,13 @@ export function run (message:Discord.Message, bot, cmd):any {
       });
 	 //end of create role
 	 if(!time) return message.reply("You didn't specify a time!");
-	 user.addRole(muterole.id);
-	 message.channel.send(`<@${user.id}> has been muted for ${ms(time)} milliseconds`);
+	 user.addRole(muterole.id).then(() => {
+	 	message.channel.send(`<@${user.id}> has been muted for ${ms(time)} milliseconds`);
+	 });
 	setTimeout(() => {
-	    user.removeRole(muterole.id);
-	    message.channel.send(`<@${user.id}> has been unmuted!`);
+	    user.removeRole(muterole.id).then(()=> {
+	    	message.channel.send(`<@${user.id}> has been unmuted!`);
+	    });
 	}, ms(time));
 
 
