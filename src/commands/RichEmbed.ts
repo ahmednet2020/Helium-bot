@@ -1,7 +1,7 @@
 import * as Discord from 'discord.js'
 
 //RichEmbed info in chat comand
-export function run(message:Discord.Message, bot, cmd):any {
+export default function (message:Discord.Message, bot, cmd):any {
 	if(message.channel.type === 'dm') return null;
 	let user = message.mentions.members.first();
 	if(!user) return null;
@@ -20,5 +20,3 @@ export function run(message:Discord.Message, bot, cmd):any {
 		report.send(userInfo);
 		return null;
 }
-
-export const help = {name:"info"}

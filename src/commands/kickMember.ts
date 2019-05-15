@@ -1,7 +1,7 @@
 import * as Discord from 'discord.js'
 
-
-export function run (message:Discord.Message, bot, cmd):any {
+// kick
+export default function (message:Discord.Message, bot, cmd):any {
 	if(!message.member.hasPermission(['KICK_MEMBERS', 'BAN_MEMBERS'])) return null;
 	let member = message.mentions.members.first()
 	if(member) {
@@ -15,5 +15,3 @@ export function run (message:Discord.Message, bot, cmd):any {
 		message.reply('mentions member you need to kick')
 	}
 }
-
-export const help = {name:"kick"}

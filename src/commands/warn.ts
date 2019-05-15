@@ -4,7 +4,7 @@ import * as path from 'path'
 import * as ms from 'ms'
 let warnFile = path.join(__dirname, './../../warn.json');
 let warns = JSON.parse(fs.readFileSync(warnFile, 'utf8'))
-export const run = (message:Discord.Message, bot, cmd):any => {
+export default function (message:Discord.Message, bot, cmd):any {
 	if(!message.member.hasPermission(["MANAGE_ROLES", "MANAGE_MESSAGES"])) return message.reply("no can't do")
 	let user = message.guild.member(message.mentions.users.first());
 	if(!user) return message.reply("mention user bro")
@@ -56,8 +56,4 @@ export const run = (message:Discord.Message, bot, cmd):any => {
 			return console.log(err.message)
 		} 
 	})
-}
-
-export const help = {
-	name: "warn"
 }

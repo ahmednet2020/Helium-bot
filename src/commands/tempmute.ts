@@ -1,7 +1,7 @@
 import * as Discord from 'discord.js'
 import * as ms from 'ms'
 
-export function run (message:Discord.Message, bot, cmd):any {
+export default function (message:Discord.Message, bot, cmd):any {
 	let user = message.guild.member(message.mentions.users.first());
 	let time = message.content.split(" ")[1];
 	let muterole:any = message.guild.roles.find(`name`, "muted");
@@ -41,5 +41,3 @@ export function run (message:Discord.Message, bot, cmd):any {
   //end of module
 
 }
-
-export const help = {name:"tempmute"}
